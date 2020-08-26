@@ -1,7 +1,7 @@
 let responseType = [
     "rock",
     "paper",
-    "scissor"
+    "scissors"
 ]
 let errorFlag = false;
 
@@ -12,7 +12,7 @@ function computerPlay(){
 }
 
 function userPlay(){
-    let userResponse = prompt('Rock, paper, scissor! (you picked:)');
+    let userResponse = prompt('Rock, paper, scissors! (you picked:)');
     console.log(`The player picks ${userResponse}`);
     if(responseType.includes(userResponse)){
         errorFlag = false;
@@ -25,8 +25,8 @@ function userPlay(){
 
 function singleRound(playerSelection, computerSelection){
     if(errorFlag == true) return "Not a valid answer";
-    if (playerSelection == "scissor" && computerSelection == "paper" ||
-        playerSelection == "rock" && computerSelection == "scissor" ||
+    if (playerSelection == "scissors" && computerSelection == "paper" ||
+        playerSelection == "rock" && computerSelection == "scissors" ||
         playerSelection == "paper" && computerSelection == "rock"
     ){
         return "The player wins"

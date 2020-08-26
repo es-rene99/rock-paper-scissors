@@ -42,7 +42,7 @@ function game(){
     let userScore = 0;
     let computerScore = 0;
     let winRoundMessage;
-    for(round = 1; round <= 3; round++){
+    for(round = 1; round <= 5; round++){
         winRoundMessage = singleRound(userPlay(),computerPlay());
         switch(winRoundMessage){
             case "The player wins": 

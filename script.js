@@ -4,6 +4,12 @@ const responseType = [
   'scissors',
 ];
 
+let round = 0;
+
+let playerVictory = 0;
+
+let computerVictory = 0;
+
 const playerOptions = document.querySelectorAll('button');
 const textResults = document.querySelector('#results');
 textResults.innerHTML = '<p>Press a button to play!</p>';
@@ -33,18 +39,36 @@ function playerWinConditions(playerSelection, computerSelection) {
 }
 
 function playRound(e) {
-  textResults.innerHTML = '';
   const playerSelection = getPlayerSelection(e);
   const computerSelection = getComputerSelection();
   if (playerWinConditions(playerSelection, computerSelection)) {
     displayMessageInTextResults('The player wins');
+    playerVictory += 1;
   } else if (playerSelection === computerSelection) {
     displayMessageInTextResults('Tie');
+    computerVictory += 1;
   } else {
     displayMessageInTextResults('The computer wins');
   }
 }
 
+function playGame(e) {
+  textResults.innerHTML = '';
+  if (round !== 5) {
+    round += 1;
+    displayMessageInTextResults(`Round: ${round}`);
+    playRound(e);
+  }
+
+  if (round === 5) {
+    if (playerVictory > computerVictory) {
+      displayMessageInTextResults('The player wins the game!!!');
+    } else {
+      displayMessageInTextResults('The computer wins the game!!!');
+    }
+  }
+}
+
 playerOptions.forEach((playerOption) => {
-  playerOption.addEventListener('click', playRound);
+  playerOption.addEventListener('click', playGame);
 });

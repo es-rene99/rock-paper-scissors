@@ -3,43 +3,48 @@ const responseType = [
   'paper',
   'scissors',
 ];
-let errorFlag = false;
 
-function computerPlay() {
-  const randomResponse = responseType[Math.floor((responseType.length * Math.random()))];
-  console.log(`The computer picks ${randomResponse}`);
-  return randomResponse;
+const playerOptions = document.querySelectorAll('button');
+const textResults = document.querySelector('#results');
+textResults.innerHTML = '<p>Press a button to play!</p>';
+
+function displayMessageInTextResults(message) {
+  const messageElement = document.createElement('p');
+  messageElement.textContent = message;
+  textResults.appendChild(messageElement);
 }
 
-function userPlay() {
-  const userResponse = prompt('Rock, paper, scissors! (you picked:)');
-  console.log(`The player picks ${userResponse}`);
-  if (responseType.includes(userResponse)) {
-    errorFlag = false;
-    return userResponse;
-  }
-  errorFlag = true;
-  return '';
+function getPlayerSelection(e) {
+  const playerSelection = e.srcElement.dataset.playerOption;
+  displayMessageInTextResults(`The player picks ${playerSelection}`);
+  return playerSelection;
 }
 
-function singleRound(playerSelection, computerSelection) {
-  if (errorFlag === true) return 'Not a valid answer';
-  if ((playerSelection === 'scissors' && computerSelection === 'paper')
+function getComputerSelection() {
+  const computerSelection = responseType[Math.floor((responseType.length * Math.random()))];
+  displayMessageInTextResults(`The computer picks ${computerSelection}`);
+  return computerSelection;
+}
+
+function playerWinConditions(playerSelection, computerSelection) {
+  return (playerSelection === 'scissors' && computerSelection === 'paper')
     || (playerSelection === 'rock' && computerSelection === 'scissors')
-    || (playerSelection === 'paper' && computerSelection === 'rock')
-  ) {
-    return 'The player wins';
-  }
-  if (playerSelection === computerSelection) {
-    return 'Tie';
-  }
+    || (playerSelection === 'paper' && computerSelection === 'rock');
+}
 
-  return 'The computer wins';
+function playRound(e) {
+  textResults.innerHTML = '';
+  const playerSelection = getPlayerSelection(e);
+  const computerSelection = getComputerSelection();
+  if (playerWinConditions(playerSelection, computerSelection)) {
+    displayMessageInTextResults('The player wins');
+  } else if (playerSelection === computerSelection) {
+    displayMessageInTextResults('Tie');
+  } else {
+    displayMessageInTextResults('The computer wins');
+  }
 }
-function game() {
-  const userScore = 0;
-  const computerScore = 0;
-  let winRoundMessage;
-  const definitiveWinnerMessage = (userScore > computerScore) ? 'The playe wins the game!' : 'The computer wins the game!';
-  console.log(definitiveWinnerMessage);
-}
+
+playerOptions.forEach((playerOption) => {
+  playerOption.addEventListener('click', playRound);
+});

@@ -23,21 +23,17 @@ function displayMessageInTextResults(message) {
   textResults.appendChild(messageElement);
 }
 
-function updateScore(winner, type) {
-  const idName = `#${winner.toLowerCase()}-${type.toLowerCase()}-score`;
-  const propertyName = `${winner.toLowerCase()}${type}Victory`;
+function increaseScore(winner, victoryType) {
+  const idName = `#${winner.toLowerCase()}-${victoryType.toLowerCase()}-score`;
+  const propertyName = `${winner.toLowerCase()}${victoryType}Victories`;
+  victoryCount[propertyName] += 1;
   const score = document.querySelector(idName);
   score.textContent = victoryCount[propertyName];
 }
 
-function addVictoryTo(winner) {
-  displayMessageInTextResults(`The ${winner} wins`);
-  if (winner === 'Player') {
-    victoryCount.playerRoundVictories += 1;
-  } else if (winner === 'Computer') {
-    victoryCount.computerRoundVictories += 1;
-  }
-  updateScore(winner, 'Round');
+function addVictoryTo(winner, victoryType) {
+  displayMessageInTextResults(`The ${winner} wins the ${victoryType}!`);
+  increaseScore(winner, victoryType);
 }
 
 function getPlayerSelection(e) {
@@ -62,21 +58,32 @@ function playRound(e) {
   const playerSelection = getPlayerSelection(e);
   const computerSelection = getComputerSelection();
   if (playerWinConditions(playerSelection, computerSelection)) {
-    addVictoryTo('Player');
+    addVictoryTo('Player', 'Round');
   } else if (playerSelection === computerSelection) {
     displayMessageInTextResults('Tie');
   } else {
-    addVictoryTo('Computer');
+    addVictoryTo('Computer', 'Round');
   }
+}
+
+function resetGameRounds() {
+  round = 1;
+  const resetValue = 0;
+  victoryCount.playerRoundVictories = resetValue;
+  victoryCount.computerRoundVictories = resetValue;
+  const roundScores = document.querySelectorAll('.round-score');
+  roundScores.forEach((roundScore) => {
+    // * justification: resetting UI value
+    // eslint-disable-next-line no-param-reassign
+    roundScore.textContent = resetValue;
+  });
 }
 
 function playGame(e) {
   round += 1;
   textResults.innerHTML = '';
   if (round > 5) {
-    round = 1;
-    victoryCount.playerRoundVictories = 0;
-    victoryCount.computerRoundVictories = 0;
+    resetGameRounds();
   }
   if (round <= 5) {
     displayMessageInTextResults(`Round: ${round}`);
@@ -84,9 +91,11 @@ function playGame(e) {
   }
   if (round === 5) {
     if (victoryCount.playerRoundVictories > victoryCount.computerRoundVictories) {
-      displayMessageInTextResults('The player wins the game!!!');
+      addVictoryTo('Player', 'Game');
+    } else if (victoryCount.playerRoundVictories === victoryCount.computerRoundVictories) {
+      displayMessageInTextResults('The game was a tie!');
     } else {
-      displayMessageInTextResults('The computer wins the game!!!');
+      addVictoryTo('Computer', 'Game');
     }
   }
 }

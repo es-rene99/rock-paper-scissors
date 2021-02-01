@@ -135,7 +135,7 @@ nav li::before {
   */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
+  font-family: monospace; /* 1 */
   font-size: 1em; /* 2 */
   overflow: auto; /* 3 */
   -ms-overflow-style: scrollbar; /* 3 */
@@ -178,7 +178,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
+  font-family: monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 

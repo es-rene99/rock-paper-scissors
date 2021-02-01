@@ -14,6 +14,7 @@
 .main-controls__button--paper {
   background: url(/src/resources/noun-paper.svg);
 }
+
 .main-controls__button--scissors {
   background: url(/src/resources/noun-scissors.svg);
 }

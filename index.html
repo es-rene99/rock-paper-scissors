@@ -9,29 +9,43 @@
       type="image/svg+xml"
       href="/src/resources/noun-paper.svg"
     />
+    <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <button data-player-option="rock">Rock</button>
-    <button data-player-option="paper">Paper</button>
-    <button data-player-option="scissors">Scissors</button>
-    <div id="results"></div>
-    <div id="score">
-      <div>
-        <h2>Player Score</h2>
-        <h3>Rounds won:</h3>
-        <span id="player-round-score" class="round-score">0</span>
-        <h3>Games won:</h3>
-        <span id="player-game-score">0</span>
+    <main class="main">
+      <div class="main-controls">
+        <button
+          class="main-controls__button main-controls__button--rock"
+          data-player-option="rock"
+        ></button>
+        <button
+          class="main-controls__button main-controls__button--paper"
+          data-player-option="paper"
+        ></button>
+        <button
+          class="main-controls__button main-controls__button--scissors"
+          data-player-option="scissors"
+        ></button>
       </div>
-      <div>
-        <h2>Computer Score</h2>
-        <h3>Rounds won:</h3>
-        <span id="computer-round-score" class="round-score">0</span>
-        <h3>Games won:</h3>
-        <span id="computer-game-score">0</span>
+      <div id="results"></div>
+      <div id="score">
+        <div>
+          <h2>Player Score</h2>
+          <h3>Rounds won:</h3>
+          <span id="player-round-score" class="round-score">0</span>
+          <h3>Games won:</h3>
+          <span id="player-game-score">0</span>
+        </div>
+        <div>
+          <h2>Computer Score</h2>
+          <h3>Rounds won:</h3>
+          <span id="computer-round-score" class="round-score">0</span>
+          <h3>Games won:</h3>
+          <span id="computer-game-score">0</span>
+        </div>
       </div>
-    </div>
-    <script src="src/js/script.js"></script>
+      <script src="src/js/script.js"></script>
+    </main>
     <footer>
       Rock, Paper, and Scissors icon are by Studio Fibonacci from the
       <a href="https://thenounproject.com/StudioFibonacci/">Noun Project</a>

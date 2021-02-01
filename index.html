@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
+    <header class="header">
+      <h1 id="title" class="header__title">Rock Paper Scissors</h1>
+    </header>
     <main class="main">
-      <h1 class="main-title">Rock Paper Scissors</h1>
       <div class="main-controls-container">
         <label class="main-controls-container__label"
-          >What would you pick?</label
+          >What would you pick against the computer?</label
         >
         <div class="main-controls">
           <button
@@ -32,12 +34,12 @@
             data-player-option="scissors"
           ></button>
         </div>
+        <div id="results" class="results"></div>
       </div>
-      <div id="results"></div>
-      <div id="score">
-        <div>
-          <h2>Player Score</h2>
-          <h3>Rounds won:</h3>
+      <div id="score" class="score">
+        <div class="score__player">
+          <h2 class="score__header">Player Score</h2>
+          <h3 class="score__subheader">Rounds won:</h3>
           <span id="player-round-score" class="round-score">0</span>
           <h3>Games won:</h3>
           <span id="player-game-score">0</span>

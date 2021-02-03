@@ -15,7 +15,6 @@ const victoryCount = {
 
 const playerOptions = document.querySelectorAll('button');
 const textResults = document.querySelector('#results');
-textResults.innerHTML = '<p>Press a button to play!</p>';
 
 function displayMessageInTextResults(message) {
   const messageElement = document.createElement('p');

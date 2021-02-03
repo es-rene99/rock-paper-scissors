@@ -16,7 +16,7 @@
       <h1 id="title" class="header__title">Rock Paper Scissors</h1>
     </header>
     <main class="main">
-      <div class="main-controls-container">
+      <section class="main-controls-container">
         <label class="main-controls-container__label"
           >What would you pick against the computer?</label
         >
@@ -35,8 +35,9 @@
           ></button>
         </div>
         <div id="results" class="results"></div>
-      </div>
-      <div id="score" class="score">
+      </section>
+
+      <section id="score" class="score-container">
         <div class="score__player">
           <h2 class="score__header">Player Score</h2>
           <h3 class="score__subheader">Rounds won:</h3>
@@ -51,12 +52,12 @@
           <h3>Games won:</h3>
           <span id="computer-game-score">0</span>
         </div>
-      </div>
-      <script src="src/js/script.js"></script>
+      </section>
     </main>
-    <footer>
+    <footer class="footer">
       Rock, Paper, and Scissors icon are by Studio Fibonacci from the
       <a href="https://thenounproject.com/StudioFibonacci/">Noun Project</a>
     </footer>
+    <script src="src/js/script.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: arial;
+  font-family: Arial, sans-serif;
 }
 
 .header {
@@ -24,13 +24,12 @@ body {
 
 .main {
   text-align: center;
-  margin: 12% auto 0 auto;
+  margin: 2rem auto 0 auto;
 }
 
 .main-controls {
   display: flex;
   flex-direction: column;
-  justify-items: center;
 }
 
 .main-controls-container__label {
@@ -46,6 +45,16 @@ body {
   width: 4rem;
   height: 4rem;
   padding: 0;
+  margin-top: 1.18rem;
+  border: 3px groove #eee;
+}
+
+.main-controls__button:hover {
+  border-color: #b1def9;
+}
+
+.main-controls__button:active {
+  border-color: #00f;
 }
 
 .main-controls__button--rock {
@@ -53,9 +62,16 @@ body {
 }
 
 .main-controls__button--paper {
-  background: url(/src/resources/noun-paper.svg) no-repeat center;
+  background: url(/src/resources/noun-paper.svg) no-repeat;
+  background-position: 8px 4px;
 }
 
 .main-controls__button--scissors {
   background: url(/src/resources/noun-scissors.svg) no-repeat center;
+  background-position: 9px 5px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 4rem;
 }
